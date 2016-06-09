@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span translate="ecofruitApp.receta.detail.title">Receta</span> {{vm.receta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="ecofruitApp.receta.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.receta.nombre}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.receta.descripcion}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.imagen">Imagen</span></dt>
+        <dd>
+            <div ng-if="vm.receta.imagen">
+                <a ng-click="vm.openFile(vm.receta.imagenContentType, vm.receta.imagen)">
+                    <img data-ng-src="{{'data:' + vm.receta.imagenContentType + ';base64,' + vm.receta.imagen}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.receta.imagenContentType}}, {{vm.byteSize(vm.receta.imagen)}}
+            </div>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.receta.fecha | date:'medium'}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.user">User</span></dt>
+        <dd>
+            {{vm.receta.user.firstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span translate="ecofruitApp.comentario.detail.title">Comentario</span> {{vm.comentario.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="ecofruitApp.comentario.texto">Texto</span></dt>
+        <dd>
+            <span>{{vm.comentario.texto}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.comentario.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.comentario.fecha | date:'medium'}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.comentario.receta">Receta</span></dt>
+        <dd>
+            <a ui-sref="receta-detail({id:vm.comentario.receta.id})">{{vm.comentario.receta.nombre}}</a>
+        </dd>
+        <dt><span translate="ecofruitApp.comentario.user">User</span></dt>
+        <dd>
+            {{vm.comentario.user.firstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

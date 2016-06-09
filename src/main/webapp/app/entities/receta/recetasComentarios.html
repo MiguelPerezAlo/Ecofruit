@@ -1,0 +1,87 @@
+<div>
+    <h2><span translate="ecofruitApp.receta.detail.title">Receta</span> {{vm.receta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="ecofruitApp.receta.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.receta.nombre}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.receta.descripcion}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.imagen">Imagen</span></dt>
+        <dd>
+            <div ng-if="vm.receta.imagen">
+                <a ng-click="vm.openFile(vm.receta.imagenContentType, vm.receta.imagen)">
+                    <img data-ng-src="{{'data:' + vm.receta.imagenContentType + ';base64,' + vm.receta.imagen}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.receta.imagenContentType}}, {{vm.byteSize(vm.receta.imagen)}}
+            </div>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.receta.fecha | date:'medium'}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.receta.user">User</span></dt>
+        <dd>
+            {{vm.receta.user.firstName}}
+        </dd>
+    </dl>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="texto"><span translate="ecofruitApp.comentario.texto">Texto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="fecha"><span translate="ecofruitApp.comentario.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="receta.nombre"><span translate="ecofruitApp.comentario.receta">Receta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="user.firstName"><span translate="ecofruitApp.comentario.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="comentario in vm.comentarios track by comentario.id">
+                <td><a ui-sref="comentario-detail({id:comentario.id})">{{comentario.id}}</a></td>
+                <td>{{comentario.texto}}</td>
+                <td>{{comentario.fecha | date:'medium'}}</td>
+                <td>
+                    <a ui-sref="receta-detail({id:comentario.receta.id})">{{comentario.receta.nombre}}</a>
+                </td>
+                <td>
+                    {{comentario.user.firstName}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="comentario-detail({id:comentario.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="comentario.edit({id:comentario.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="comentario.delete({id:comentario.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+
+</div>

@@ -1,0 +1,28 @@
+{
+    "health": {
+        "title": "Revisions de salud",
+        "refresh.button": "Actualitzar",
+        "stacktrace": "Traça d'error",
+        "details": {
+            "details": "Details",
+            "properties": "Properties",
+            "name": "Name",
+            "value": "Value",
+            "error": "Error"
+        },
+        "indicator": {
+            "diskSpace": "Espai al disc",
+            "mail": "Compte de correu electrònic",
+            "elasticsearch": "Elasticsearch",
+            "db": "Base de dades"
+        },
+        "table": {
+            "service": "Nom del servei",
+            "status": "Estat"
+        },
+        "status": {
+            "UP": "FINS",
+            "DOWN": "BAIX"
+        }
+    }
+}

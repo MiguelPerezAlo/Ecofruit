@@ -1,0 +1,25 @@
+{
+    "ecofruitApp": {
+        "comentario" : {
+            "home": {
+                "title": "Comentarios",
+                "createLabel": "Crear nuevo Comentario",
+                "createOrEditLabel": "Crear o editar Comentario",
+                "search": "Search for Comentario"
+            },
+            "created": "Un nuevo Comentario ha sido creado con el identificador {{ param }}",
+            "updated": "Un Comentario ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Comentario ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Comentario {{ id }}?"
+            },
+            "detail": {
+                "title": "Comentario"
+            },
+            "texto": "Texto",
+            "fecha": "Fecha",
+            "receta": "Receta",
+            "user": "User"
+        }
+    }
+}

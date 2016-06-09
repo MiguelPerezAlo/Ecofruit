@@ -1,0 +1,44 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "comentario",
+            "otherEntityName": "comentario",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "receta"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "firstName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imagen",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fecha",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20160609182256",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "receta",
+    "pagination": "pager"
+}

@@ -1,0 +1,27 @@
+{
+    "ecofruitApp": {
+        "receta" : {
+            "home": {
+                "title": "Recetas",
+                "createLabel": "Crear nuevo Receta",
+                "createOrEditLabel": "Crear o editar Receta",
+                "search": "Search for Receta"
+            },
+            "created": "Un nuevo Receta ha sido creado con el identificador {{ param }}",
+            "updated": "Un Receta ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Receta ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Receta {{ id }}?"
+            },
+            "detail": {
+                "title": "Receta"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion",
+            "imagen": "Imagen",
+            "fecha": "Fecha",
+            "comentario": "Comentario",
+            "user": "User"
+        }
+    }
+}
