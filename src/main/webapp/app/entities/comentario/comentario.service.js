@@ -21,7 +21,13 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'getMiscomentarios':{
+                method :'GET',
+                isArray:true,
+                url:'api/Miscomentarios'
+            }
         });
+
     }
 })();

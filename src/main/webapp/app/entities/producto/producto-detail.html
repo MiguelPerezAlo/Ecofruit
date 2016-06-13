@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span translate="ecofruitApp.producto.detail.title">Producto</span> {{vm.producto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="ecofruitApp.producto.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.producto.nombre}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.producto.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.producto.descripcion}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.producto.imagen">Imagen</span></dt>
+        <dd>
+            <div ng-if="vm.producto.imagen">
+                <a ng-click="vm.openFile(vm.producto.imagenContentType, vm.producto.imagen)">
+                    <img data-ng-src="{{'data:' + vm.producto.imagenContentType + ';base64,' + vm.producto.imagen}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.producto.imagenContentType}}, {{vm.byteSize(vm.producto.imagen)}}
+            </div>
+        </dd>
+        <dt><span translate="ecofruitApp.producto.precio">Precio</span></dt>
+        <dd>
+            <span>{{vm.producto.precio}}</span>
+        </dd>
+        <dt><span translate="ecofruitApp.producto.marca">Marca</span></dt>
+        <dd>
+            <a ui-sref="marca-detail({id:vm.producto.marca.id})">{{vm.producto.marca.id}}</a>
+        </dd>
+        <dt><span translate="ecofruitApp.producto.subcategoria">Subcategoria</span></dt>
+        <dd>
+            <a ui-sref="subcategoria-detail({id:vm.producto.subcategoria.id})">{{vm.producto.subcategoria.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,35 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "producto",
+            "otherEntityName": "producto",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "subcategoria"
+        },
+        {
+            "relationshipName": "categoria",
+            "otherEntityName": "categoria",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "changelogDate": "20160613105123",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "subcategoria",
+    "pagination": "pager"
+}

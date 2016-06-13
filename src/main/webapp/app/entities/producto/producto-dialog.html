@@ -1,0 +1,99 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProductoLabel" translate="ecofruitApp.producto.home.createOrEditLabel">Create or edit a Producto</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.producto.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.producto.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="ecofruitApp.producto.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.producto.nombre"
+                    required />
+            <div ng-show="editForm.nombre.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nombre.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="ecofruitApp.producto.descripcion" for="field_descripcion">Descripcion</label>
+                <textarea class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.producto.descripcion" required />
+            <div ng-show="editForm.descripcion.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.descripcion.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImagen($file, vm.producto)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="ecofruitApp.producto.imagen" for="field_imagen">Imagen</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.producto.imagenContentType + ';base64,' + vm.producto.imagen}}" style="max-height: 100px;" ng-if="vm.producto.imagen"/>
+                <div ng-if="vm.producto.imagen" class="help-block clearfix">
+                    <span class="pull-left">{{vm.producto.imagenContentType}}, {{vm.byteSize(vm.producto.imagen)}}</span>
+                    <button ng-click="vm.producto.imagen=null;vm.producto.imagenContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImagen($file, vm.producto)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="imagen" id="field_imagen"
+                    ng-model="vm.producto.imagen"
+                     />
+            <input type="hidden" class="form-control" name="imagenContentType" id="field_imagenContentType"
+                    ng-model="vm.producto.imagenContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="ecofruitApp.producto.precio" for="field_precio">Precio</label>
+            <input type="number" class="form-control" name="precio" id="field_precio"
+                    ng-model="vm.producto.precio"
+                    required />
+            <div ng-show="editForm.precio.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.precio.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.precio.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="ecofruitApp.producto.marca" for="field_marca">Marca</label>
+            <select class="form-control" id="field_marca" name="marca" ng-model="vm.producto.marca" ng-options="marca as marca.id for marca in vm.marcas track by marca.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="ecofruitApp.producto.subcategoria" for="field_subcategoria">Subcategoria</label>
+            <select class="form-control" id="field_subcategoria" name="subcategoria" ng-model="vm.producto.subcategoria" ng-options="subcategoria as subcategoria.id for subcategoria in vm.subcategorias track by subcategoria.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

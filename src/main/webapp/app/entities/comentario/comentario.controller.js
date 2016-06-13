@@ -9,7 +9,7 @@
 
     function ComentarioController ($scope, $state, DataUtils, Comentario, ComentarioSearch, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
-        
+
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -90,5 +90,6 @@
             vm.currentSearch = null;
             vm.transition();
         }
+        $scope.Miscomentarios = Comentario.getMiscomentarios();
     }
 })();

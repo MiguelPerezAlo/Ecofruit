@@ -1,0 +1,96 @@
+<div>
+    <h2 translate="ecofruitApp.producto.home.title">Productos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="producto.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="ecofruitApp.producto.home.createLabel">
+                        Create new Producto
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'ecofruitApp.producto.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nombre"><span translate="ecofruitApp.producto.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion"><span translate="ecofruitApp.producto.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagen"><span translate="ecofruitApp.producto.imagen">Imagen</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="precio"><span translate="ecofruitApp.producto.precio">Precio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="marca.id"><span translate="ecofruitApp.producto.marca">Marca</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="subcategoria.id"><span translate="ecofruitApp.producto.subcategoria">Subcategoria</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="producto in vm.productos track by producto.id">
+                    <td><a ui-sref="producto-detail({id:producto.id})">{{producto.id}}</a></td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>
+                        <a ng-if="producto.imagen" ng-click="vm.openFile(producto.imagenContentType, producto.imagen)">
+                            <img data-ng-src="{{'data:' + producto.imagenContentType + ';base64,' + producto.imagen}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="producto.imagen">{{producto.imagenContentType}}, {{vm.byteSize(producto.imagen)}}</span>
+                    </td>
+                    <td>{{producto.precio}}</td>
+                    <td>
+                        <a ui-sref="marca-detail({id:producto.marca.id})">{{producto.marca.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="subcategoria-detail({id:producto.subcategoria.id})">{{producto.subcategoria.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="producto-detail({id:producto.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="producto.edit({id:producto.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="producto.delete({id:producto.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

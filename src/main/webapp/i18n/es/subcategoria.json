@@ -1,0 +1,25 @@
+{
+    "ecofruitApp": {
+        "subcategoria" : {
+            "home": {
+                "title": "Subcategorias",
+                "createLabel": "Crear nuevo Subcategoria",
+                "createOrEditLabel": "Crear o editar Subcategoria",
+                "search": "Search for Subcategoria"
+            },
+            "created": "Un nuevo Subcategoria ha sido creado con el identificador {{ param }}",
+            "updated": "Un Subcategoria ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Subcategoria ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Subcategoria {{ id }}?"
+            },
+            "detail": {
+                "title": "Subcategoria"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion",
+            "producto": "Producto",
+            "categoria": "Categoria"
+        }
+    }
+}

@@ -10,6 +10,10 @@
                 "receta": "Receta",
                 "comentario": "Comentario",
                 "mensaje": "Mensaje",
+                "producto": "Producto",
+                "marca": "Marca",
+                "subcategoria": "Subcategoria",
+                "categoria": "Categoria",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

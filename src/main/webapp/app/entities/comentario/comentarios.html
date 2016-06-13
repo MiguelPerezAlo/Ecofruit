@@ -3,7 +3,7 @@
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
+            <div class="col-xs-3 no-padding-left">
                 <button class="btn btn-primary" ui-sref="comentario.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span class="hidden-xs"  translate="ecofruitApp.comentario.home.createLabel">
@@ -11,7 +11,15 @@
                     </span>
                 </button>
             </div>
-            <div class="col-xs-8 no-padding-right">
+            <div class="col-xs-3 no-padding-left">
+                <button class="btn btn-primary" ui-sref="comentario.mis" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs">
+                        Mis comentarios
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-4 no-padding-right">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
                         <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'ecofruitApp.comentario.home.search' | translate }}">
@@ -61,18 +69,6 @@
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="comentario.edit({id:comentario.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="comentario.delete({id:comentario.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
                             </button>
                         </div>
                     </td>
