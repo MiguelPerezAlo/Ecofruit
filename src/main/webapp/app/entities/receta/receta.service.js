@@ -21,6 +21,11 @@
                     return data;
                 }
             },
+            'getMisrecetas':{
+                method :'GET',
+                isArray:true,
+                url:'api/Misrecetas'
+            },
             'update': { method:'PUT' }
         });
     }

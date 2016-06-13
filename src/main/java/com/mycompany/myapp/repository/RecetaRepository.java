@@ -15,7 +15,7 @@ import java.util.List;
 public interface RecetaRepository extends JpaRepository<Receta,Long> {
 
     @Query("select receta from Receta receta where receta.user.login = ?#{principal.username}")
-    List<Receta> findByUserIsCurrentUser();
+    Page<Receta> findByUserIsCurrentUser(Pageable pageable);
 
    /* @Query("select comentario from Comentario comentario, Receta receta where receta.nombre=comentario.receta")
     Page<Receta> findComentarioByReceta(Pageable pageable);*/

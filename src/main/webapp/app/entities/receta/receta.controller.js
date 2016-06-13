@@ -9,7 +9,7 @@
 
     function RecetaController ($scope, $state, DataUtils, Receta, RecetaSearch, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
-        
+
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -90,5 +90,6 @@
             vm.currentSearch = null;
             vm.transition();
         }
+        $scope.Misrecetas = Receta.getMisrecetas();
     }
 })();

@@ -121,6 +121,18 @@ public class RecetaResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/Misrecetas",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Receta>> getMisRecetas(Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Recetas");
+        Page<Receta> page = recetaRepository.findByUserIsCurrentUser(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/recetas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
    /* @RequestMapping(value = "/recetasComentarios",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
