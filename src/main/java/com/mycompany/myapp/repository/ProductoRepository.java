@@ -12,4 +12,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface ProductoRepository extends JpaRepository<Producto,Long> {
 
+    <!-- @Query("select producto from Producto producto, Subcategoria subcategoria where producto.subcategoria.nombre = 'Fruta'")
+    Page<Producto> findBySubcategoriaIsFruta(Pageable pageable);-->
 }
